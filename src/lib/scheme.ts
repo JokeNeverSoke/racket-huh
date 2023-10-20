@@ -14,7 +14,7 @@ export const useScheme = ({ code }: { code: string }) => {
   const [scheme, setScheme] = useState<unknown[]>([]);
   const [error, setError] = useState<unknown>(null);
 
-  const debouncedCode = useDebounce(code, 1000);
+  const debouncedCode = useDebounce(code, 500);
 
   useEffect(() => {
     void (async () => {

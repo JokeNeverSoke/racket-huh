@@ -1,36 +1,9 @@
 import { z } from "zod";
 
-
 import { createTRPCRouter, publicProcedure } from "@/server/api/trpc";
+import { TRPCError } from "@trpc/server";
 
 export const postRouter = createTRPCRouter({
-  hello: publicProcedure
-    .input(z.object({ text: z.string() }))
-    .query(({ input }) => {
-      return {
-        greeting: `Hello ${input.text}`,
-      };
-    }),
-
-  create: publicProcedure
-    .input(z.object({ name: z.string().min(1) }))
-    .mutation(async ({ ctx, input }) => {
-      // simulate a slow db call
-      await new Promise((resolve) => setTimeout(resolve, 1000));
-
-      return ctx.db.post.create({
-        data: {
-          name: input.name,
-        },
-      });
-    }),
-
-  getLatest: publicProcedure.query(({ ctx }) => {
-    return ctx.db.post.findFirst({
-      orderBy: { createdAt: "desc" },
-    });
-  }),
-
   get: publicProcedure
     .input(z.object({ id: z.number() }))
     .query(async ({ ctx, input }) => {
@@ -38,11 +11,37 @@ export const postRouter = createTRPCRouter({
         where: { id: input.id },
       });
       if (!code) {
-        return
+        return;
       }
       return {
         title: code.title,
         content: code.code,
+      };
+    }),
+
+  add: publicProcedure
+    .input(
+      z.object({
+        title: z.string(),
+        content: z.string(),
+        password: z.string(),
+      }),
+    )
+    .mutation(async ({ ctx, input }) => {
+      if (input.password !== process.env.ADMIN_PASS) {
+        throw new TRPCError({
+          code: "UNAUTHORIZED",
+          message: "You are not authorized to add code",
+        });
+      }
+      const code = await ctx.db.racketCode.create({
+        data: {
+          title: input.title,
+          code: input.content,
+        },
+      });
+      return {
+        id: code.id,
       };
     }),
 });
