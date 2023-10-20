@@ -65,7 +65,7 @@ export default function NewCodePage() {
           className="rounded-lg border border-gray-400 px-3 py-2"
         />
       </div>
-      <CodeSnippet code={content} fixed />
+      <CodeSnippet code={content} fixed title={title} />
       <button
         type="submit"
         className="rounded bg-blue-500 px-4 py-2 text-white"
