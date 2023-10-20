@@ -22,7 +22,7 @@ export default function NewCodePage() {
   return (
     <form
       onSubmit={handleSubmit}
-      className="rounded-3xl bg-slate-700 p-8 text-white"
+      className="rounded-3xl bg-slate-700 p-8 dark:text-white"
     >
       <div className="mb-4 flex flex-col">
         <label htmlFor="title" className="mb-2">

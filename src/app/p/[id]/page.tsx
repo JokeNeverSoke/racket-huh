@@ -15,9 +15,8 @@ export default function CodePage({ params }: { params: { id: string } }) {
 
   const { title, content } = res.data;
   return (
-    <div className="rounded-3xl bg-slate-700 p-8">
-      <h1 className="mb-5 text-3xl text-white">{title}</h1>
-      <CodeSnippet code={content} />
+    <div>
+      <CodeSnippet code={content} title={title} />
     </div>
   );
 }
