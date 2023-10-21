@@ -41,4 +41,5 @@ jobs:
       - name: Apply all pending migrations to the database
         run: pnpx prisma migrate deploy
         env:
-          DATABASE_URL: ${{ secrets.DATABASE_URL }}
+          DATABASE_PRISMA_URL: ${{ secrets.DATABASE_PRISMA_URL }}
+          DATABASE_URL_NON_POOLING: ${{ secrets.DATABASE_URL_NON_POOLING }}
