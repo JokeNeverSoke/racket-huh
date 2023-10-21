@@ -98,7 +98,7 @@ export default function Page({
       >
         {q}
       </div>
-      <div className="flex flex-col gap-4 lg:flex-row">
+      <div className="flex flex-col gap-4 lg:flex-row flex-wrap">
         {choices.map((choice, i) => {
           return (
             <div
