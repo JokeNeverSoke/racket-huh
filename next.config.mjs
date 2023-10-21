@@ -15,14 +15,6 @@ const config = {
           { key: "Access-Control-Allow-Credentials", value: "true" },
           { key: "Access-Control-Allow-Origin", value: "*" }, // replace this your actual origin
           {
-            key: "Access-Control-Allow-Origin",
-            value: "https://garden.jokens.me",
-          }, // replace this your actual origin
-          {
-            key: "Access-Control-Allow-Origin",
-            value: "https://localhost:808",
-          }, // replace this your actual origin
-          {
             key: "Access-Control-Allow-Methods",
             value: "GET,DELETE,PATCH,POST,PUT",
           },
