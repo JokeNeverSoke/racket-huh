@@ -1,4 +1,3 @@
-"use router";
 import type { Metadata } from "next";
 
 // import { api } from "@/trpc/server";
