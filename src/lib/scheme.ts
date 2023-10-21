@@ -2,6 +2,10 @@
 import { useEffect, useState } from "react";
 import { useScript } from "@uidotdev/usehooks";
 
+const std_functions = {
+  "string-upcase": (s: string) => s.toUpperCase(),
+  "string-downcase": (s: string) => s.toLowerCase(),
+};
 
 type Struct = {
   name: string;
@@ -99,7 +103,8 @@ export const useScheme = ({ code }: { code: string }) => {
         // @ts-ignore
         const { exec, env } = global.lips as { exec: Exec };
         console.log("Preprocessing");
-        const [s, lenv] = preprocess(debouncedCode, env);
+        const stdenv = env.inherit("name", std_functions);
+        const [s, lenv] = preprocess(debouncedCode, stdenv);
         console.log("Executing");
         const scheme = await exec(s, lenv);
         console.log("Done");
