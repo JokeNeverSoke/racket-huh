@@ -38,6 +38,9 @@ dependencies:
   '@uiw/react-codemirror':
     specifier: ^4.21.20
     version: 4.21.20(@babel/runtime@7.23.2)(@codemirror/autocomplete@6.10.2)(@codemirror/language@6.9.1)(@codemirror/lint@6.4.2)(@codemirror/search@6.5.4)(@codemirror/state@6.3.1)(@codemirror/theme-one-dark@6.1.2)(@codemirror/view@6.21.3)(codemirror@6.0.1)(react-dom@18.2.0)(react@18.2.0)
+  canvas-confetti:
+    specifier: ^1.9.0
+    version: 1.9.0
   next:
     specifier: ^13.5.4
     version: 13.5.6(@babel/core@7.23.2)(react-dom@18.2.0)(react@18.2.0)
@@ -61,6 +64,9 @@ dependencies:
     version: 3.22.4
 
 devDependencies:
+  '@types/canvas-confetti':
+    specifier: ^1.6.2
+    version: 1.6.2
   '@types/eslint':
     specifier: ^8.44.2
     version: 8.44.6
@@ -1223,6 +1229,10 @@ packages:
     resolution: {integrity: sha512-uC0xLelzOuoFwxbBQ3GzX4DaWNucO9lW2vlGPdKu8ycXu2ObSa739oQ/lNF6qWDNUKXS0tQvGnDCAxEd178EzQ==}
     dev: false
 
+  /@types/canvas-confetti@1.6.2:
+    resolution: {integrity: sha512-ozy7d+7AmYnPEgzdGwwAIA0/yLHnT9YBUQAOm5Ucu+P2ptxq2P464SZDVzYp71wD10ZPYckyeC665bPxQM78kw==}
+    dev: true
+
   /@types/eslint@8.44.6:
     resolution: {integrity: sha512-P6bY56TVmX8y9J87jHNgQh43h6VVU+6H7oN7hgvivV81K2XY8qJZ5vqPy/HdUoVIelii2kChYVzQanlswPWVFw==}
     dependencies:
@@ -1763,6 +1773,10 @@ packages:
 
   /caniuse-lite@1.0.30001551:
     resolution: {integrity: sha512-vtBAez47BoGMMzlbYhfXrMV1kvRF2WP/lqiMuDu1Sb4EE4LKEgjopFDSRtZfdVnslNRpOqV/woE+Xgrwj6VQlg==}
+
+  /canvas-confetti@1.9.0:
+    resolution: {integrity: sha512-0UGU/T5Un/Cd4Aj4fu/p/oVQm8Il+brK5xcmY+y77u7PXuyNJD4ODUWe01A5o3GUI9Bb8lOBlQ10VdaDsY1FBA==}
+    dev: false
 
   /cbor-extract@0.3.2:
     resolution: {integrity: sha512-euTSudP3MORNR9+DLDY6seMBZ5EA32CLdobmN5IjmU00zZDnim1zSZZAVrNubKfoBFhckDJFJXSx6zOLNbIYqw==}
