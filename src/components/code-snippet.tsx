@@ -1,3 +1,4 @@
+"use client";
 /* eslint-disable @typescript-eslint/no-base-to-string */
 /* eslint-disable @typescript-eslint/ban-ts-comment */
 import { useState } from "react";

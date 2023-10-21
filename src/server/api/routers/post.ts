@@ -44,4 +44,12 @@ export const postRouter = createTRPCRouter({
         id: code.id,
       };
     }),
+
+  list: publicProcedure.query(async ({ ctx }) => {
+    const codes = await ctx.db.racketCode.findMany({
+      orderBy: { id: "desc" },
+    });
+    
+    return codes
+  }),
 });

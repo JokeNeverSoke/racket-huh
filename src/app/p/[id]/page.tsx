@@ -1,41 +1,57 @@
-"use client";
+"use router";
+import type { Metadata } from "next";
 
-import { api } from "@/trpc/react";
+// import { api } from "@/trpc/server";
+import { caller } from "@/server/api/root";
 
+import { Resizer } from "@/components/resizer";
 import { CodeSnippet } from "@/components/code-snippet";
-import { useEffect } from "react";
 
-export default function CodePage({ params }: { params: { id: string } }) {
-  const res = api.post.get.useQuery({ id: parseInt(params.id) });
-  useEffect(() => {
-    window.addEventListener("message", (e) => {
-      // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
-      if (e.data?.type === "getHeight") {
-        const height = document.body.scrollHeight;
-        window.parent.postMessage(
-          // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment, @typescript-eslint/no-unsafe-member-access
-          { height, type: "setHeight", id: e.data.id },
-          "*",
-        );
-      }
-      // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
-      if (e.data?.type === "setBodyBackground") {
-        // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment, @typescript-eslint/no-unsafe-member-access
-        document.body.style.backgroundColor = e.data.color;
-      }
-    });
-  });
-  if (res.isLoading) {
-    return <div>Loading...</div>;
+type Props = {
+  params: { id: string };
+};
+
+export default async function CodePage({ params }: Props) {
+  let res;
+  try {
+    res = await caller.post.get({ id: parseInt(params.id) });
+  } catch (e) {
+    console.error(e);
   }
-  if (!res.data) {
+
+  if (!res) {
     return <div>Post not found</div>;
   }
 
-  const { title, content } = res.data;
+  const { title, content } = res;
+
   return (
     <div>
+      <Resizer />
       <CodeSnippet code={content} title={title} />
     </div>
   );
+}
+
+export const dynamic = "force-dynamic";
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const res = await caller.post.get({ id: parseInt(params.id) });
+  if (!res) {
+    return {
+      title: "Post not found",
+    };
+  }
+
+  const { title } = res;
+
+  return {
+    title: title,
+  };
+}
+export async function generateStaticParams() {
+  const posts = await caller.post.list();
+
+  return posts.map((post) => ({
+    id: post.id.toString(),
+  }));
 }
