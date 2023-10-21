@@ -8,8 +8,13 @@ import { useScheme } from "@/lib/scheme";
 
 type SchemeLine =
   | {
-      __type__: "bigint";
+      __type__: "bigint" | "float";
       __value__: bigint;
+    }
+  | {
+      __type__: "rational";
+      __num__: SchemeLine;
+      __denom__: SchemeLine;
     }
   | boolean
   | {
@@ -38,6 +43,7 @@ function schemeToString(scheme: SchemeLine, startList = true): string {
   ) {
     const lineObj = line as SchemeLine;
     if (typeof lineObj === "object" && "_ctype" in lineObj) {
+      // custom struct
       return (
         `(make-${lineObj._ctype} ` +
         lineObj._order
@@ -48,12 +54,30 @@ function schemeToString(scheme: SchemeLine, startList = true): string {
         ")"
       );
     } else if (typeof lineObj === "boolean") {
+      // boolean
       return "#" + lineObj.toString();
     } else if ("__type__" in lineObj) {
-      return lineObj.__value__.toString();
+      // number
+      if (
+        ["bigint", "float"].includes(lineObj.__type__) &&
+        lineObj.__type__ !== "rational"
+      ) {
+        return lineObj.__value__.toString();
+      } else {
+        if (lineObj.__type__ !== "rational") {
+          throw new Error("Unknown type: " + lineObj.__type__);
+        }
+        return (
+          schemeToString(lineObj.__num__) +
+          "/" +
+          schemeToString(lineObj.__denom__)
+        );
+      }
     } else if ("__string__" in lineObj && lineObj.__string__ !== undefined) {
+      // string
       return '"' + lineObj.__string__.replace('"', '\\"') + '"';
     } else if ("car" in lineObj) {
+      // list
       const list = lineObj;
 
       let listString = "";
@@ -72,6 +96,9 @@ function schemeToString(scheme: SchemeLine, startList = true): string {
       }
       return listString;
     }
+  } else if (typeof line === "function" || "__defmacro__" in line) {
+    // function
+    return "#<procedure>";
   }
   return (line as unknown as string).toString();
 }
