@@ -18,6 +18,11 @@ export default function CodePage({ params }: { params: { id: string } }) {
           "*",
         );
       }
+      // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
+      if (e.data?.type === "setBodyBackground") {
+        // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment, @typescript-eslint/no-unsafe-member-access
+        document.body.style.backgroundColor = e.data.color;
+      }
     });
   });
   if (res.isLoading) {

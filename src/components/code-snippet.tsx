@@ -19,7 +19,7 @@ export const CodeSnippet = ({
 
   console.log({ scheme, error });
   return (
-    <div className="rounded-3xl bg-sky-500 p-4 shadow-md transition-shadow hover:shadow-lg">
+    <div className="rounded-3xl bg-sky-500 p-4">
       <div className="text-l mb-4 rounded-xl bg-white px-8 py-3 font-bold text-black">
         {title}
       </div>
