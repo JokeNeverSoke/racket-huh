@@ -127,6 +127,7 @@ export const CodeSnippet = ({
           className="ml-4 rounded-md bg-sky-800 px-4 py-1 text-white shadow-md transition-shadow hover:shadow-lg"
           onClick={onRun}
           disabled={status === "loading"}
+          type="button"
         >
           {status !== "loading" ? "Execute" : "Running..."}
         </button>
