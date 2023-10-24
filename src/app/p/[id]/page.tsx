@@ -32,7 +32,6 @@ export default async function CodePage({ params }: Props) {
   );
 }
 
-export const dynamic = "force-dynamic";
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const res = await caller.post.get({ id: parseInt(params.id) });
   if (!res) {
