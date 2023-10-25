@@ -2,6 +2,7 @@
 /* eslint-disable @typescript-eslint/no-base-to-string */
 /* eslint-disable @typescript-eslint/ban-ts-comment */
 import { useState } from "react";
+import { useMediaQuery } from "@uidotdev/usehooks";
 import CodeMirror from "@uiw/react-codemirror";
 import { langs } from "@uiw/codemirror-extensions-langs";
 
@@ -115,6 +116,7 @@ export const CodeSnippet = ({
 }) => {
   const fixed = f ?? false;
   const [newCode, setNewCode] = useState(code);
+  const isMediumDevice = useMediaQuery("only screen and (min-width : 769px)");
   const { scheme, error, onRun, status } = useScheme({
     code: fixed ? code : newCode,
   });
@@ -144,6 +146,7 @@ export const CodeSnippet = ({
             height="auto"
             extensions={[langs.scheme()]}
             editable={!fixed}
+            maxHeight={isMediumDevice ? "512px" : "256px"}
           />
         </div>
         <div className="h-auto flex-1 overflow-scroll rounded-xl bg-white shadow-md transition-shadow focus-within:shadow-lg hover:shadow-lg">
@@ -167,6 +170,7 @@ export const CodeSnippet = ({
             height="auto"
             extensions={[langs.scheme()]}
             editable={false}
+            maxHeight={isMediumDevice ? "512px" : "256px"}
           />
         </div>
       </div>
