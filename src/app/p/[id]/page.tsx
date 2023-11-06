@@ -22,12 +22,13 @@ export default async function CodePage({ params }: Props) {
     return <div>Post not found</div>;
   }
 
-  const { title, content } = res;
+  const { title, content, presetList } = res;
+  console.log({ presetList });
 
   return (
     <div>
       <Resizer />
-      <CodeSnippet code={content} title={title} />
+      <CodeSnippet code={content} title={title} presetList={presetList} />
     </div>
   );
 }

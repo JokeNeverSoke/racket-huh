@@ -109,16 +109,23 @@ export const CodeSnippet = ({
   code,
   fixed: f,
   title,
+  presetList = [],
 }: {
   code: string;
   fixed?: boolean;
   title: string;
+  presetList?: { title: string; code: string }[];
 }) => {
+  "use client";
   const fixed = f ?? false;
   const [newCode, setNewCode] = useState(code);
   const isMediumDevice = useMediaQuery("only screen and (min-width : 769px)");
+  const k = [...presetList.map((p) => p.code), fixed ? code : newCode].join(
+    "\n",
+  );
+  console.log({ k });
   const { scheme, error, onRun, status } = useScheme({
-    code: fixed ? code : newCode,
+    code: k,
   });
 
   return (

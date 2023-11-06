@@ -28,5 +28,9 @@ model RacketCode {
     createdAt DateTime @default(now())
     updatedAt DateTime @updatedAt
 
+    presetId Int?
+    preset   RacketCode?  @relation("Preset", fields: [presetId], references: [id])
+    usedBy   RacketCode[] @relation("Preset")
+
     @@index([title])
 }

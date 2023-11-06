@@ -13,9 +13,22 @@ export const postRouter = createTRPCRouter({
       if (!code) {
         return;
       }
+      const presetList = [];
+      let presetId = code.presetId;
+      while (presetId != null) {
+        const preset = await ctx.db.racketCode.findUnique({
+          where: { id: presetId },
+        });
+        if (!preset) {
+          break;
+        }
+        presetList.push(preset);
+        presetId = preset.presetId;
+      }
       return {
         title: code.title,
         content: code.code,
+        presetList: presetList,
       };
     }),
 
@@ -25,6 +38,7 @@ export const postRouter = createTRPCRouter({
         title: z.string(),
         content: z.string(),
         password: z.string(),
+        presetId: z.number().optional(),
       }),
     )
     .mutation(async ({ ctx, input }) => {
@@ -38,6 +52,7 @@ export const postRouter = createTRPCRouter({
         data: {
           title: input.title,
           code: input.content,
+          presetId: input.presetId,
         },
       });
       return {
@@ -49,7 +64,7 @@ export const postRouter = createTRPCRouter({
     const codes = await ctx.db.racketCode.findMany({
       orderBy: { id: "desc" },
     });
-    
-    return codes
+
+    return codes;
   }),
 });
