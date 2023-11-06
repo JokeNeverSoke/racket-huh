@@ -13,6 +13,15 @@ const std_aliases = {
   λ: "lambda",
 };
 
+function alias(code: string):string {
+  return Object.entries(std_aliases).reduce(
+    (acc, [key, value]) =>
+      acc.replace(new RegExp("\\(s*" + key, "g"), "(" + value),
+    code,
+  );
+}
+
+
 function readToken(token: string): AllToken {
   if (token === "(") {
     return {
@@ -238,11 +247,7 @@ function preprocess(s: string, env: unknown): [string, unknown] {
   const no_struct = with_no_comments.replace(r, "");
 
   // remap function aliases - starts with '('
-  const with_alias = Object.entries(with_no_brackets).reduce(
-    (acc, [key, value]) =>
-      acc.replace(new RegExp("\\(s*" + key, "g"), "(" + value),
-    no_struct,
-  );
+  const with_alias = alias(no_struct);
 
   const with_no_local = remap_locals(with_alias);
 
