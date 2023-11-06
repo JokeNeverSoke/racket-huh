@@ -7,6 +7,12 @@ const std_functions = {
   "string-downcase": (s: string) => s.toLowerCase(),
 };
 
+const std_aliases = {
+  foldr: "fold-right",
+  foldl: "fold",
+  "λ": "lambda",
+};
+
 type Struct = {
   name: string;
   fields: string[];
@@ -29,9 +35,14 @@ function preprocess(s: string, env: unknown): [string, unknown] {
   }
   // remove structs from code
   const no_struct = s.replace(r, "");
+  const with_alias = Object.entries(std_aliases).reduce(
+    (acc, [key, value]) =>
+      acc.replace(new RegExp("\\(s*" + key, "g"), "(" + value),
+    no_struct,
+  );
   const with_std =
     `(load "https://unpkg.com/@jcubic/lips@beta/dist/std.scm" lips.env.__parent__)\n` +
-    no_struct;
+    with_alias;
 
   const functions: Record<string, CallableFunction> = {};
   structs.forEach((struct) => {
