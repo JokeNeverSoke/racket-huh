@@ -123,7 +123,7 @@ export const CodeSnippet = ({
   const k = [...presetList.map((p) => p.code), fixed ? code : newCode].join(
     "\n",
   );
-  console.log({ k });
+  //console.log({ k });
   const { scheme, error, onRun, status } = useScheme({
     code: k,
   });

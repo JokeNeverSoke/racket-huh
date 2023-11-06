@@ -15,7 +15,7 @@ export default function Page({
   const [selected, setSelected] = useState<number | number[] | null>(
     mcq ? [] : null,
   );
-  console.log(selected);
+  //console.log(selected);
   const [disabled, setDisabled] = useState<number[]>([]);
   const [done, setDone] = useState<boolean>(false);
 

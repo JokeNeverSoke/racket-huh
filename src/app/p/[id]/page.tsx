@@ -23,7 +23,7 @@ export default async function CodePage({ params }: Props) {
   }
 
   const { title, content, presetList } = res;
-  console.log({ presetList });
+  //console.log({ presetList });
 
   return (
     <div>
