@@ -4,6 +4,7 @@
 import { useState } from "react";
 import { useMediaQuery } from "@uidotdev/usehooks";
 import CodeMirror from "@uiw/react-codemirror";
+import { oneDark } from "@codemirror/theme-one-dark";
 import { langs } from "@uiw/codemirror-extensions-langs";
 
 import { useScheme } from "@/lib/scheme";
@@ -120,6 +121,7 @@ export const CodeSnippet = ({
   const fixed = f ?? false;
   const [newCode, setNewCode] = useState(code);
   const isMediumDevice = useMediaQuery("only screen and (min-width : 769px)");
+  const isDarkMode = useMediaQuery("(prefers-color-scheme: dark)");
   const k = [...presetList.map((p) => p.code), fixed ? code : newCode].join(
     "\n",
   );
@@ -129,12 +131,12 @@ export const CodeSnippet = ({
   });
 
   return (
-    <div className="rounded-3xl bg-sky-500 p-4">
-      <div className="text-l mb-4 flex items-center rounded-xl bg-white px-8 py-3 font-bold text-black">
+    <div className="rounded-3xl bg-sky-500 p-4 dark:bg-sky-900">
+      <div className="text-l mb-4 flex items-center rounded-xl bg-white px-8 py-3 font-bold text-black dark:bg-black dark:text-gray-50">
         <div>{title}</div>
         <div className="flex-1"></div>
         <button
-          className="ml-4 rounded-md bg-sky-800 px-4 py-1 text-white shadow-md transition-shadow hover:shadow-lg"
+          className="ml-4 rounded-md bg-sky-800 px-4 py-1 text-white shadow-md transition-shadow hover:shadow-lg dark:bg-sky-800"
           onClick={onRun}
           disabled={status === "loading"}
           type="button"
@@ -144,7 +146,7 @@ export const CodeSnippet = ({
       </div>
       <div className="mb-4 flex flex-col justify-between gap-4 md:flex-row md:items-start">
         <div className="h-auto flex-1 overflow-scroll rounded-xl bg-white shadow-md transition-shadow hover:shadow-lg">
-          <div className="border-b-[1px] border-sky-950 px-5 py-2 text-sm font-bold text-sky-800">
+          <div className="border-b-[1px] border-sky-950 px-5 py-2 text-sm font-bold text-sky-800 dark:border-none dark:bg-gray-800 dark:text-white">
             Source
           </div>
           <CodeMirror
@@ -154,10 +156,11 @@ export const CodeSnippet = ({
             extensions={[langs.scheme()]}
             editable={!fixed}
             maxHeight={isMediumDevice ? "512px" : "256px"}
+            theme={isDarkMode ? oneDark : undefined}
           />
         </div>
         <div className="h-auto flex-1 overflow-scroll rounded-xl bg-white shadow-md transition-shadow focus-within:shadow-lg hover:shadow-lg">
-          <div className="border-b-[1px] border-sky-950 px-5 py-2 text-sm font-bold text-sky-800">
+          <div className="border-b-[1px] border-sky-950 px-5 py-2 text-sm font-bold text-sky-800 dark:border-none dark:bg-gray-800 dark:text-white">
             Output
           </div>
           <CodeMirror
@@ -178,6 +181,7 @@ export const CodeSnippet = ({
             extensions={[langs.scheme()]}
             editable={false}
             maxHeight={isMediumDevice ? "512px" : "256px"}
+            theme={isDarkMode ? oneDark : undefined}
           />
         </div>
       </div>

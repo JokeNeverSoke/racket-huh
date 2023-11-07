@@ -5,6 +5,9 @@ settings:
   excludeLinksFromLockfile: false
 
 dependencies:
+  '@codemirror/theme-one-dark':
+    specifier: ^6.1.2
+    version: 6.1.2
   '@jcubic/lips':
     specifier: 1.0.0-beta.16
     version: 1.0.0-beta.16(@babel/core@7.23.2)(rollup@2.79.1)
