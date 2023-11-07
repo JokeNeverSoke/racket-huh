@@ -5,9 +5,6 @@ settings:
   excludeLinksFromLockfile: false
 
 dependencies:
-  '@codemirror/theme-one-dark':
-    specifier: ^6.1.2
-    version: 6.1.2
   '@jcubic/lips':
     specifier: 1.0.0-beta.16
     version: 1.0.0-beta.16(@babel/core@7.23.2)(rollup@2.79.1)
@@ -38,6 +35,12 @@ dependencies:
   '@uiw/codemirror-extensions-langs':
     specifier: ^4.21.20
     version: 4.21.20(@codemirror/autocomplete@6.10.2)(@codemirror/language-data@6.3.1)(@codemirror/language@6.9.1)(@codemirror/legacy-modes@6.3.3)(@codemirror/state@6.3.1)(@codemirror/view@6.21.3)(@lezer/common@1.1.0)(@lezer/highlight@1.1.6)(@lezer/javascript@1.4.8)(@lezer/lr@1.3.13)
+  '@uiw/codemirror-theme-tokyo-night':
+    specifier: ^4.21.20
+    version: 4.21.20(@codemirror/language@6.9.1)(@codemirror/state@6.3.1)(@codemirror/view@6.21.3)
+  '@uiw/codemirror-theme-tokyo-night-day':
+    specifier: ^4.21.20
+    version: 4.21.20(@codemirror/language@6.9.1)(@codemirror/state@6.3.1)(@codemirror/view@6.21.3)
   '@uiw/react-codemirror':
     specifier: ^4.21.20
     version: 4.21.20(@babel/runtime@7.23.2)(@codemirror/autocomplete@6.10.2)(@codemirror/language@6.9.1)(@codemirror/lint@6.4.2)(@codemirror/search@6.5.4)(@codemirror/state@6.3.1)(@codemirror/theme-one-dark@6.1.2)(@codemirror/view@6.21.3)(codemirror@6.0.1)(react-dom@18.2.0)(react@18.2.0)
@@ -1496,6 +1499,38 @@ packages:
       - '@lezer/highlight'
       - '@lezer/javascript'
       - '@lezer/lr'
+    dev: false
+
+  /@uiw/codemirror-theme-tokyo-night-day@4.21.20(@codemirror/language@6.9.1)(@codemirror/state@6.3.1)(@codemirror/view@6.21.3):
+    resolution: {integrity: sha512-vyNkvYg+ttw4Bb3WBOnugcYRY+I6kaGppVN6yzhfIIHSKJg3Qa6MWU3CX4jkEt93h06AuZKJQEtr0tGu7CahwQ==}
+    dependencies:
+      '@uiw/codemirror-themes': 4.21.20(@codemirror/language@6.9.1)(@codemirror/state@6.3.1)(@codemirror/view@6.21.3)
+    transitivePeerDependencies:
+      - '@codemirror/language'
+      - '@codemirror/state'
+      - '@codemirror/view'
+    dev: false
+
+  /@uiw/codemirror-theme-tokyo-night@4.21.20(@codemirror/language@6.9.1)(@codemirror/state@6.3.1)(@codemirror/view@6.21.3):
+    resolution: {integrity: sha512-kKCDw6gMDGfbFgFh2yozG061nuxIDALeDSgqZw8zpUV166+A3a14SjIF70IqTMvQU5N3lSEyinG5ZM1jui2jiA==}
+    dependencies:
+      '@uiw/codemirror-themes': 4.21.20(@codemirror/language@6.9.1)(@codemirror/state@6.3.1)(@codemirror/view@6.21.3)
+    transitivePeerDependencies:
+      - '@codemirror/language'
+      - '@codemirror/state'
+      - '@codemirror/view'
+    dev: false
+
+  /@uiw/codemirror-themes@4.21.20(@codemirror/language@6.9.1)(@codemirror/state@6.3.1)(@codemirror/view@6.21.3):
+    resolution: {integrity: sha512-/Ncc88v5RroeDAOfhao5lmkobmH4aJZqlSAJJTxXE7AzM85BjuCnnUYXVT7VFeEslFtfTiIgriyLmJQoGOi2mA==}
+    peerDependencies:
+      '@codemirror/language': '>=6.0.0'
+      '@codemirror/state': '>=6.0.0'
+      '@codemirror/view': '>=6.0.0'
+    dependencies:
+      '@codemirror/language': 6.9.1
+      '@codemirror/state': 6.3.1
+      '@codemirror/view': 6.21.3
     dev: false
 
   /@uiw/react-codemirror@4.21.20(@babel/runtime@7.23.2)(@codemirror/autocomplete@6.10.2)(@codemirror/language@6.9.1)(@codemirror/lint@6.4.2)(@codemirror/search@6.5.4)(@codemirror/state@6.3.1)(@codemirror/theme-one-dark@6.1.2)(@codemirror/view@6.21.3)(codemirror@6.0.1)(react-dom@18.2.0)(react@18.2.0):

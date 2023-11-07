@@ -12,7 +12,6 @@
     "start": "next start"
   },
   "dependencies": {
-    "@codemirror/theme-one-dark": "^6.1.2",
     "@jcubic/lips": "1.0.0-beta.16",
     "@prisma/client": "^5.1.1",
     "@t3-oss/env-nextjs": "^0.7.0",
@@ -23,6 +22,8 @@
     "@trpc/server": "^10.37.1",
     "@uidotdev/usehooks": "^2.4.0",
     "@uiw/codemirror-extensions-langs": "^4.21.20",
+    "@uiw/codemirror-theme-tokyo-night": "^4.21.20",
+    "@uiw/codemirror-theme-tokyo-night-day": "^4.21.20",
     "@uiw/react-codemirror": "^4.21.20",
     "canvas-confetti": "^1.9.0",
     "next": "^13.5.4",

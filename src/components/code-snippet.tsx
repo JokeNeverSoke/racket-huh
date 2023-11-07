@@ -4,7 +4,9 @@
 import { useState } from "react";
 import { useMediaQuery } from "@uidotdev/usehooks";
 import CodeMirror from "@uiw/react-codemirror";
-import { oneDark } from "@codemirror/theme-one-dark";
+
+import { tokyoNight } from "@uiw/codemirror-theme-tokyo-night";
+import { tokyoNightDay } from "@uiw/codemirror-theme-tokyo-night-day";
 import { langs } from "@uiw/codemirror-extensions-langs";
 
 import { useScheme } from "@/lib/scheme";
@@ -156,7 +158,7 @@ export const CodeSnippet = ({
             extensions={[langs.scheme()]}
             editable={!fixed}
             maxHeight={isMediumDevice ? "512px" : "256px"}
-            theme={isDarkMode ? oneDark : undefined}
+            theme={isDarkMode ? tokyoNight : tokyoNightDay}
           />
         </div>
         <div className="h-auto flex-1 overflow-scroll rounded-xl bg-white shadow-md transition-shadow focus-within:shadow-lg hover:shadow-lg">
@@ -181,7 +183,7 @@ export const CodeSnippet = ({
             extensions={[langs.scheme()]}
             editable={false}
             maxHeight={isMediumDevice ? "512px" : "256px"}
-            theme={isDarkMode ? oneDark : undefined}
+            theme={isDarkMode ? tokyoNight : tokyoNightDay}
           />
         </div>
       </div>
