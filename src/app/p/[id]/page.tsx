@@ -6,6 +6,11 @@ import { caller } from "@/server/api/root";
 import { Resizer } from "@/components/resizer";
 import { CodeSnippet } from "@/components/code-snippet";
 
+// hide body scrollbar in iframe
+// nextjs does not expose a good way to modify
+// parent tags inside server elements
+import "./iframe.css";
+
 type Props = {
   params: { id: string };
 };

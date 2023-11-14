@@ -151,7 +151,7 @@ export const CodeSnippet = ({
         </button>
       </div>
       <div className="mb-4 flex flex-col justify-between gap-4 md:flex-row md:items-start">
-        <div className="h-auto flex-1 overflow-scroll rounded-xl bg-white shadow-md transition-shadow hover:shadow-lg">
+        <div className="h-auto flex-1 overflow-hidden rounded-xl bg-white shadow-md transition-shadow hover:shadow-lg">
           <div className="border-b-[1px] border-sky-950 px-5 py-2 text-sm font-bold text-sky-800 dark:border-none dark:bg-gray-800 dark:text-white">
             Source
           </div>
@@ -165,7 +165,7 @@ export const CodeSnippet = ({
             theme={isDarkMode ? tokyoNight : tokyoNightDay}
           />
         </div>
-        <div className="h-auto flex-1 overflow-scroll rounded-xl bg-white shadow-md transition-shadow focus-within:shadow-lg hover:shadow-lg">
+        <div className="h-auto flex-1 overflow-hidden rounded-xl bg-white shadow-md transition-shadow focus-within:shadow-lg hover:shadow-lg">
           <div className="border-b-[1px] border-sky-950 px-5 py-2 text-sm font-bold text-sky-800 dark:border-none dark:bg-gray-800 dark:text-white">
             Output
           </div>
