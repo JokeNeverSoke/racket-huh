@@ -9,6 +9,7 @@ import { tokyoNight } from "@uiw/codemirror-theme-tokyo-night";
 import { tokyoNightDay } from "@uiw/codemirror-theme-tokyo-night-day";
 import { langs } from "@uiw/codemirror-extensions-langs";
 
+import { inIframe } from "@/lib/iframe";
 import { useScheme } from "@/lib/scheme";
 
 type SchemeLine =
@@ -127,6 +128,9 @@ export const CodeSnippet = ({
   const k = [...presetList.map((p) => p.code), fixed ? code : newCode].join(
     "\n",
   );
+
+  const isIframe = inIframe();
+
   //console.log({ k });
   const { scheme, error, onRun, status } = useScheme({
     code: k,
@@ -187,6 +191,16 @@ export const CodeSnippet = ({
           />
         </div>
       </div>
+
+      {isIframe ? null : (
+        <div className="text-sm rounded-xl bg-white px-8 py-3 text-gray-700 dark:bg-black dark:text-gray-200">
+          This snippet hosting service is{" "}
+          <a href="https://github.com/jokeneversoke/racket-huh" className="underline">
+            open source on GitHub
+          </a>
+          . We are looking for contributors!
+        </div>
+      )}
     </div>
   );
 };
