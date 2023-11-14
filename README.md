@@ -40,7 +40,8 @@ code to lips.
 
 ### Project Structure
 
-The rest of the project is simple. We use typescript RPC for server client execution, prisma as database ORM and postgresql as the database. Entries are
+The rest of the project is simple. We use typescript RPC for server client execution,
+prisma as database ORM and postgresql as the database. Entries are
 retrieved using dynamic pathnames.
 
 A current hack exists in `src/lib/scheme.ts`, where we load lips into
@@ -48,3 +49,9 @@ the `globalThis` scope in a useHook due to incompatibilities of
 the library with server rendering. I haven't found a better way to
 load the library dynamically without it executing/being bundled on server
 side.
+
+## Why the Name?
+
+I only called this racket-huh because of how predicates are pronounced by
+NEU professors. A function called `is-prime?` would be pronounced as
+`is prime huh` where `huh` stands for the unpronouncable `?`.
