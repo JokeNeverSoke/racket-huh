@@ -55,3 +55,7 @@ side.
 I only called this racket-huh because of how predicates are pronounced by
 NEU professors. A function called `is-prime?` would be pronounced as
 `is prime huh` where `huh` stands for the unpronouncable `?`.
+
+## Related
+
+- [TRack](https://github.com/jokeneversoke/track) - Expermiental static-type checker for a superset of Racket
